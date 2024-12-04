@@ -20,7 +20,7 @@ function esperarEnvioFormulario(formulario) {
             // Evitar el comportamiento predeterminado
             Event.preventDefault();
 
-            respuesta = parseInt(document.getElementById("respuesta").value);
+            respuesta = parseInt(document.getElementById('respuesta').value);
             // Resolver la Promesa con los datos
             resolve(respuesta);
         }), {once: true};
@@ -32,6 +32,7 @@ async function main() {
     const tablas = [parseInt(prompt("Ingresa las tablas que quieres aprender"))];
     const cantidadOperaciones = parseInt(prompt("Ingresa la cantidad de operaciones"));
     const arrayNumeros = convertirArray(cantidadOperaciones);
+    const inputRespuesta = document.getElementById('respuesta');
 
 
     for (let i = 0; i < cantidadOperaciones; i++) {
@@ -55,6 +56,7 @@ async function main() {
             console.log("incorrecto");
         }
 
+        inputRespuesta.value = "";
     }
 }
 
