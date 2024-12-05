@@ -60,5 +60,33 @@ async function main() {
     }
 }
 
-main();
+const currentPage = document.body.id;
 
+if(currentPage === "inicio"){
+    const botones = document.querySelectorAll(".boton");
+    const todas = document.querySelector(".todas");
+
+    botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+                if (boton.classList.contains("pulsado")){
+                    boton.classList.remove("pulsado");
+                }else{
+                    boton.classList.add("pulsado");
+                }
+        });
+    });
+
+    todas.addEventListener("click", () =>{
+        botones.forEach((boton) => {
+            if (!boton.classList.contains("pulsado")){
+                boton.classList.add("pulsado");
+            }else{
+                boton.classList.remove("pulsado");
+            }
+        });
+    } )
+}else if(currentPage === "index"){
+     main();
+}else{
+    
+}      
