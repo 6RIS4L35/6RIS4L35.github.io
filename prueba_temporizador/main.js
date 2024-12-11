@@ -15,18 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const ancho = (tiempoRestante / tiempoTotal) * 100; // Porcentaje restante
             timerBar.style.width = `${ancho}%`;
 
-            // Cambiar el color dependiendo del tiempo restante
-            if (tiempoRestante <= 3) {
-                timerBar.style.backgroundColor = "red";
-            } else if (tiempoRestante <= 5) {
-                timerBar.style.backgroundColor = "orange";
-            }
-
-            // Si se acaba el tiempo
-            if (tiempoRestante <= 0) {
-                clearInterval(intervalo);
-                alert("¡Se acabó el tiempo!");
-            }
         }, 1000); // Actualiza cada 1 segundo
     }
 

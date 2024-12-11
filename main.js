@@ -1,7 +1,10 @@
 const currentPage = document.body.id;
 let tablas = [];
+let tiempos = [];
 let tiempoTranscurrido;
 let puntuacion = 0;
+let correctos = 0;
+let incorrectos = 0;
 
 if(currentPage === "inicio"){
     const botones = document.querySelectorAll(".boton");
@@ -44,6 +47,7 @@ if(currentPage === "inicio"){
 else if(currentPage === "index"){
     const timerBar = document.getElementById("timer-bar");
     const formulario = document.getElementById("formulario");
+    const respuestaBox = document.getElementById("respuesta")
     tablas = JSON.parse(localStorage.getItem("tablas"));
     cantidadOperaciones = 16;
     let tiempoTotal = 10; // Tiempo total en segundos
@@ -106,26 +110,21 @@ else if(currentPage === "index"){
                 const ancho = (tiempoRestante / tiempoTotal) * 100; // Porcentaje restante
                 timerBar.style.width = `${ancho}%`;
     
-                // Cambiar el color dependiendo del tiempo restante
-                if (tiempoRestante <= 3) {
-                    timerBar.style.backgroundColor = "red";
-                } else if (tiempoRestante <= 5) {
-                    timerBar.style.backgroundColor = "orange";
-                }
-    
-                // Si se acaba el tiempo
-                if (tiempoRestante <= 0) {
-                    clearInterval(intervalo);
-                }
+
             }, 1000); // Actualiza cada 1 segundo
         }
         function reiniciarTemporizador() {
             clearInterval(intervalo); // Detener el intervalo actual
             tiempoRestante = tiempoTotal; // Restablecer el tiempo restante
             timerBar.style.width = "100%"; // Reiniciar el ancho de la barra
-            timerBar.style.backgroundColor = "#4caf50"; // Color inicial
             tiempoTranscurrido = 0;
         }
+
+        respuestaBox.focus();
+
+        respuestaBox.addEventListener("blur", () => {
+            respuestaBox.focus();
+        })
     
     
         for (let i = 0; i < cantidadOperaciones; i++) {
@@ -148,12 +147,15 @@ else if(currentPage === "index"){
             if (respuesta == resultado){
                 console.log("correcto");
                 cambioDeColorCorrecto();
+                correctos++;
                 puntuacion = puntuacion + ((10 - tiempoTranscurrido) * 100)
             }else{
                 console.log("incorrecto");
                 cambioDeColorIncorrecto();
+                incorrectos++;
                 puntuacion = puntuacion - 500
             }
+            tiempos.push(tiempoTranscurrido)
             inputRespuesta.value = "";
             console.log(tiempoTranscurrido);
             console.log(puntuacion);
@@ -161,7 +163,10 @@ else if(currentPage === "index"){
         }
 
         window.location.href = "puntuación.html";
-        localStorage.setItem("puntuacion", JSON.stringify(puntuacion))
+        localStorage.setItem("puntuacion", JSON.stringify(puntuacion));
+        localStorage.setItem("correctos", JSON.stringify(correctos));
+        localStorage.setItem("incorrectos", JSON.stringify(incorrectos));
+        localStorage.setItem("tiempos", JSON.stringify(tiempos));
     }
 
     main();
@@ -170,13 +175,28 @@ else if(currentPage === "index"){
 
 else if (currentPage === "puntuacion"){
     const volver = document.querySelector(".volver");
-    const h3puntuacion = document.querySelector(".puntuacion");
+    const itemPuntuacion = document.querySelector(".puntuacion");
+    const itemCorrectos = document.querySelector(".correctos");
+    const itemIncorrectos = document.querySelector(".incorrectos");
+    const itemTiempoPromedio = document.querySelector(".tiempoPromedio");
     puntuacion = JSON.parse(localStorage.getItem("puntuacion"));
+    correctos = JSON.parse(localStorage.getItem("correctos"));
+    incorrectos = JSON.parse(localStorage.getItem("incorrectos"));
+    tiempos = JSON.parse(localStorage.getItem("tiempos"));
 
-    h3puntuacion.innerText = puntuacion
+    promedioTiempos = tiempos.reduce((i, actual) => i + actual, 0) / tiempos.length;
+    promedioTiempos = Math.round(promedioTiempos * 100) / 100;
+
+    itemPuntuacion.innerText = `Puntos: ${puntuacion}`;
+    itemCorrectos.innerText = `Correctos: ${correctos}`;
+    itemIncorrectos.innerText = `Incorrectos: ${incorrectos}`;
+    itemTiempoPromedio.innerText = `Tiempo promedio: ${promedioTiempos}seg`;
+
+    
 
     volver.addEventListener("click", () => {
         console.log('boton pulsado');
         window.location.href = "inicio.html";
+        localStorage.clear();
     });
 }
