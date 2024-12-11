@@ -161,16 +161,22 @@ else if(currentPage === "index"){
         }
 
         window.location.href = "puntuación.html";
+        localStorage.setItem("puntuacion", JSON.stringify(puntuacion))
     }
 
     main();
-    localStorage.clear();
+    localStorage.removeItem("tablas");
 }
 
 else if (currentPage === "puntuacion"){
-    const volver = document.querySelector(".volver")
+    const volver = document.querySelector(".volver");
+    const h3puntuacion = document.querySelector(".puntuacion");
+    puntuacion = JSON.parse(localStorage.getItem("puntuacion"));
+
+    h3puntuacion.innerText = puntuacion
+
     volver.addEventListener("click", () => {
         console.log('boton pulsado');
         window.location.href = "inicio.html";
     });
-}      
+}

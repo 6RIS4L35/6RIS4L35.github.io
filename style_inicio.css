@@ -11,23 +11,28 @@ html{
 }
 
 body{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    background-color: rgba(234, 234, 234, 1);
 }
 
 .titulo{
     display: inline-block;
-    font-size: 1.6rem;
+    font-size: 3.5rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     width: fit-content;
+
+    color: rgba(109, 109, 109, 1);
 }
 
 .seleccionTablas{
-    width: auto;
-    height: auto;
+    width: 730px;
+    height: 280px;
     margin-top: 2rem;
     margin-bottom: 2rem;
 
@@ -37,7 +42,7 @@ body{
 }
 
 .tabla{
-    margin: 2rem;
+    margin: 0.5rem;
 
     width: 10rem;
     height: 10rem;
@@ -48,7 +53,7 @@ body{
 }
 
 .botones{
-    width: 100%;
+    width: 915px;
     display: flex;
     justify-content: space-between;
 }
@@ -56,14 +61,25 @@ body{
 .btn{
     width: 15rem;
     height: 4rem;
+    font-size: 2rem;
     margin-right: 2rem;
     margin-left: 2rem;
+
+    background-color: rgba(217, 217, 217, 1);
+    color: rgba(109, 109, 109, 1);
+
+    border-radius: 20px;
+    border: 0;
 }
 
 .boton{
-    background-color: darkgray;
+    background-color: rgba(234, 234, 234, 1);
+    border-radius: 12px;
+    border: 6px, solid, rgba(156, 156, 156, 1);
+    font-size: 2.5rem;
+    color: rgba(109, 109, 109, 1);
 }
 
 .boton.pulsado{
-    background-color: rgb(101, 101, 101);
+    background-color: rgba(156, 156, 156, 1);
 }
