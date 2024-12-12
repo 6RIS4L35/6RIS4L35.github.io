@@ -97,9 +97,9 @@ else if(currentPage === "juego"){
             return new Promise(resolve => setTimeout(resolve, ms));
         }
         async function cambioDeColorCorrecto() {
-            body.classList.add("correcto")
+            body.classList.add("correcto");
             await pausa(100);
-            body.classList.remove("correcto")
+            body.classList.remove("correcto");
         }
         async function cambioDeColorIncorrecto() {
             body.classList.add("incorrecto")
