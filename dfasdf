@@ -1,0 +1,65 @@
+[33mcommit 66be38742bf6b36ece28e0a656a339fe3d41a87b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 11 16:55:06 2024 -0500
+
+    eliminacion de las pruebas del temporizador
+
+[33mcommit 83e87f2ce82fdd7f5c6f50cd8f106c9380c2f387[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 11 16:44:02 2024 -0500
+
+    juego terminado, toda la pagina de puntuación completa, y todo el css completo
+
+[33mcommit cc66263174d8ab1b7ebdd21f234b8de48af7c485[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 11 13:51:34 2024 -0500
+
+    sistema de localstorage para los puntos creado, mejoras en el css de la pagina
+
+[33mcommit 9b22066427fe81538404b8593f647a75214664a4[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Mon Dec 9 14:46:41 2024 -0500
+
+    carpeta de pruebas y implementación del sistema de puntos, falta crear estos puntos en el localStorage para actualizarlos en el final del juego
+
+[33mcommit fcce7ca87afd70668faffd220f58bebe07a280ec[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Thu Dec 5 11:01:46 2024 -0500
+
+    cambio de pagina y solucionado el error al cambiar de pagina
+
+[33mcommit 236aaa2648a068d27f7aa2c58772925c7c2ec10e[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Thu Dec 5 09:28:20 2024 -0500
+
+    toda la parte visual de el inicio
+
+[33mcommit bb4f387ba89b1aeddddceaebc420e5aae694eede[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 4 10:47:09 2024 -0500
+
+    agregamos los archivos, en el anterior commit no se enviarion
+
+[33mcommit 964278e594b88ad5d47c98273e8445700491efdc[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 4 10:45:50 2024 -0500
+
+    borramos todas los archivos de prueba y agregamos los archivos html para las distintas paginas
+
+[33mcommit 948e5741d0fa5100aba25a207957d7c77a8ae3e5[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 4 10:43:11 2024 -0500
+
+    pequeños cambios, nada realmente importante
+
+[33mcommit 2cd5079725fe9dff9080673703d0bbce44b0a3d5[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 4 10:23:30 2024 -0500
+
+    solucinado el problema de la parada de el ciclo for, falta por solucionar que se borre el numero de el cuadro de texto
+
+[33mcommit a8b46df9e9ae9a3eed0ff417723ab458d1446006[m
+Author: GRI5ALES <grisalesduquejuanesteban@gmail.com>
+Date:   Wed Dec 4 09:45:12 2024 -0500
+
+    primer commit, todavia no he solucionado el problema del stop de la pagina

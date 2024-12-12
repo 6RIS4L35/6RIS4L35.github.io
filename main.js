@@ -6,7 +6,7 @@ let puntuacion = 0;
 let correctos = 0;
 let incorrectos = 0;
 
-if(currentPage === "inicio"){
+if(currentPage === "index"){
     const botones = document.querySelectorAll(".boton");
     const todas = document.querySelector(".todas");
     const btnEmpezar = document.querySelector(".empezar");
@@ -29,7 +29,7 @@ if(currentPage === "inicio"){
     
     btnEmpezar.addEventListener("click", () => {
         localStorage.setItem("tablas", JSON.stringify(tablas));
-        window.location.href = "index.html";
+        window.location.href = "juego.html";
     });
 
     todas.addEventListener("click", () =>{
@@ -43,7 +43,7 @@ if(currentPage === "inicio"){
     });
 }
 
-else if(currentPage === "index"){
+else if(currentPage === "juego"){
     const timerBar = document.getElementById("timer-bar");
     const formulario = document.getElementById("formulario");
     const respuestaBox = document.getElementById("respuesta")
@@ -205,7 +205,7 @@ else if(currentPage === "index"){
 
     volver.addEventListener("click", () => {
         console.log('boton pulsado');
-        window.location.href = "inicio.html";
+        window.location.href = "index.html";
         localStorage.clear();
     });
 }
