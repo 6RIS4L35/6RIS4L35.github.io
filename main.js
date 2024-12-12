@@ -21,7 +21,6 @@ if(currentPage === "inicio"){
                     boton.classList.remove("pulsado");
                 }else{
                     tablas.push(parseInt(boton.innerText)); //ver cuales botones estan presionados para guardar esos datos en un array
-                    let indextabla = tablas.indexOf(boton.innerText);
                     boton.classList.add("pulsado");
                 }
         });
@@ -63,7 +62,7 @@ else if(currentPage === "index"){
         return numeros.splice(indiceAleatorio, 1)[0];
     }
     
-    function elegirNumerosAleatorios(numeros) {
+    function elegirNumerosAleatorios(numeros){
         let copiaNumeros = [...numeros];
         let indiceAleatorio = Math.floor(Math.random() * copiaNumeros.length);
         return copiaNumeros[indiceAleatorio];
@@ -71,18 +70,23 @@ else if(currentPage === "index"){
     
     function esperarEnvioFormulario(formulario) {
         return new Promise((resolve) => {
-            const formulario = document.getElementById('formulario');
-            formulario.addEventListener('submit', (Event) => {
-                // Evitar el comportamiento predeterminado
-                Event.preventDefault();
+            const inputRespuesta = document.getElementById('respuesta');
+            let temporizador;
     
-                respuesta = parseInt(document.getElementById('respuesta').value);
-                // Resolver la Promesa con los datos
+            // Evento de envío del formulario
+            formulario.addEventListener('submit', (event) => {
+                event.preventDefault();
+                clearTimeout(temporizador); // Cancela el temporizador
+                const respuesta = parseInt(inputRespuesta.value) || 0; // Captura la respuesta, considera 0 si no es válida
                 resolve(respuesta);
-            }), {once: true};
+            }, { once: true });
+    
+            // Temporizador para manejar el tiempo agotado
+            temporizador = setTimeout(() => {
+                resolve(null); // Devuelve null si el tiempo se acaba
+            }, tiempoRestante * 1000);
         });
     }
-    
     async function main() {
         const h1multiplicacion = document.getElementById("multiplicacion");
         const arrayNumeros = convertirArray(cantidadOperaciones);
@@ -119,6 +123,18 @@ else if(currentPage === "index"){
             timerBar.style.width = "100%"; // Reiniciar el ancho de la barra
             tiempoTranscurrido = 0;
         }
+        function respuestaCorrecta(){
+            console.log("correcto");
+            cambioDeColorCorrecto();
+            correctos++;
+            puntuacion = puntuacion + ((tiempoTotal - tiempoTranscurrido) * 100);
+        }
+        function respuestaInorrecta(){
+            console.log("incorrecto");
+            cambioDeColorIncorrecto();
+            incorrectos++;
+            puntuacion = puntuacion - 500;
+        }
 
         respuestaBox.focus();
 
@@ -128,6 +144,7 @@ else if(currentPage === "index"){
     
     
         for (let i = 0; i < cantidadOperaciones; i++) {
+            iniciarTemporizador();
             const multiplicando = elegirNumerosAleatorios(tablas);
             const multiplicador = elegirEliminar(arrayNumeros);
             const resultado = multiplicando * multiplicador;
@@ -135,7 +152,6 @@ else if(currentPage === "index"){
             console.log((i + 1) + '. ' + multVisual);
     
             h1multiplicacion.innerText = multVisual;
-            iniciarTemporizador();
 
             const respuesta = await esperarEnvioFormulario(formulario);
 
@@ -144,18 +160,13 @@ else if(currentPage === "index"){
 
             h1multiplicacion.innerText = "";
     
-            if (respuesta == resultado){
-                console.log("correcto");
-                cambioDeColorCorrecto();
-                correctos++;
-                puntuacion = puntuacion + ((10 - tiempoTranscurrido) * 100)
+            if (respuesta === null || respuesta !== resultado){
+                respuestaInorrecta();
             }else{
-                console.log("incorrecto");
-                cambioDeColorIncorrecto();
-                incorrectos++;
-                puntuacion = puntuacion - 500
+                respuestaCorrecta();
             }
-            tiempos.push(tiempoTranscurrido)
+            
+            tiempos.push(tiempoTranscurrido);
             inputRespuesta.value = "";
             console.log(tiempoTranscurrido);
             console.log(puntuacion);
@@ -171,9 +182,7 @@ else if(currentPage === "index"){
 
     main();
     localStorage.removeItem("tablas");
-}
-
-else if (currentPage === "puntuacion"){
+}else if (currentPage === "puntuacion"){
     const volver = document.querySelector(".volver");
     const itemPuntuacion = document.querySelector(".puntuacion");
     const itemCorrectos = document.querySelector(".correctos");

@@ -41,11 +41,11 @@ body{
 }
 
 .correcto{
-    background-color: aquamarine;
+    background-color: rgba(167, 205, 130, 1);
 }
 
 .incorrecto{
-    background-color: lightcoral;
+    background-color: rgb(205, 112, 130, 1);
 }
 
 .timer-bar-container {
