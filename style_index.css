@@ -11,77 +11,75 @@ html{
 }
 
 body{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 
     background-color: rgba(234, 234, 234, 1);
 }
 
-#multiplicacion{
+.titulo{
     display: inline-block;
-    font-size: 6rem;
-    margin-top: 20px;
+    font-size: 3.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: fit-content;
+
+    color: rgba(109, 109, 109, 1);
 }
 
-#respuesta::-webkit-inner-spin-button,
-#respuesta::-webkit-outer-spin-button {
-    -webkit-appearance: none; /* Elimina las flechas */
+.seleccionTablas{
+    width: 730px;
+    height: 280px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#respuesta{
-    all: unset;
-    width: 100px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-size: 16px;
-    outline: none;
+.tabla{
+    margin: 0.5rem;
+
+    width: 10rem;
+    height: 10rem;
+
+    display:inline-block;
+
+    border: 0;
 }
 
-.correcto{
-    background-color: rgba(167, 205, 130, 1);
+.botones{
+    width: 915px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.incorrecto{
-    background-color: rgb(205, 112, 130, 1);
-}
-
-.timer-bar-container {
-    width: 60rem;
+.btn{
+    width: 15rem;
     height: 4rem;
-    background-color: #ddd;
-    border-radius: 2rem;
-    overflow: hidden;
-    margin: 20px auto;
+    font-size: 2rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+
+    background-color: rgba(217, 217, 217, 1);
+    color: rgba(109, 109, 109, 1);
+
+    border-radius: 20px;
+    border: 0;
 }
 
-/* Estilo de la barra de progreso */
-.timer-bar {
-    height: 100%;
-    background-color: rgba(167, 205, 130, 1); /* Color inicial */
-    width: 100%; /* Comienza con 100% de ancho */
-    transition: width 1s linear; /* Transición suave */
+.boton{
+    background-color: rgba(234, 234, 234, 1);
+    border-radius: 12px;
+    border: 6px, solid, rgba(156, 156, 156, 1);
+    font-size: 2.5rem;
+    color: rgba(109, 109, 109, 1);
 }
 
-#respuesta{
-    width: 40rem;
-    height: 20rem;
-
-    text-align: center;
-
-    caret-color: transparent;
-
-    font-size: 10rem;
-    color: rgb(61, 61, 61);
-
-    border-radius: 2rem;
-    border: none;
-
-    box-shadow: 0px 14px 27px 0px rgba(0, 0, 0, 0.25);
-
-    background-color: rgba(239, 239, 239, 1);
+.boton.pulsado{
+    background-color: rgba(156, 156, 156, 1);
 }
-
-

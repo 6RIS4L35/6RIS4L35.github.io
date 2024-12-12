@@ -91,7 +91,7 @@ else if(currentPage === "juego"){
         const h1multiplicacion = document.getElementById("multiplicacion");
         const arrayNumeros = convertirArray(cantidadOperaciones);
         const inputRespuesta = document.getElementById('respuesta');
-        const body = document.getElementById("index");
+        const body = document.getElementById("juego");
 
         function pausa(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -129,7 +129,7 @@ else if(currentPage === "juego"){
             correctos++;
             puntuacion = puntuacion + ((tiempoTotal - tiempoTranscurrido) * 100);
         }
-        function respuestaInorrecta(){
+        function respuestaIncorrecta(){
             console.log("incorrecto");
             cambioDeColorIncorrecto();
             incorrectos++;
@@ -161,7 +161,7 @@ else if(currentPage === "juego"){
             h1multiplicacion.innerText = "";
     
             if (respuesta === null || respuesta !== resultado){
-                respuestaInorrecta();
+                respuestaIncorrecta();
             }else{
                 respuestaCorrecta();
             }
